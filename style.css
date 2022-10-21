@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.website-header {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: 50% 40%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.8)) , url("images/poster.jpg");
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-container {
+   text-align: center;
+}
+.content-wrap {
+    max-width: 700px;
+    width: 80%;
+}
+#title {
+    font-weight: 800;
+    font-size: 42px;
+    text-shadow: 0px 0px 20px #242424;
+    
+}
+#watchlist {
+    font-size: 28px;
+}
+#watchlist a {
+    text-decoration: none;
+    color: white;
+    
+}
+#watchlist a:hover, #watchlist a:focus {
+    background: -webkit-linear-gradient(right, #eee, rgb(238, 20, 20));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.content-main {
+    background-color: #121212;
+    width: 100%;
+   
+    padding: 0;
+    margin: 0;
+}
+.search-container {
+    width: 100%;
+    height: 40px;
+  
+    position:absolute;
+    top: -16px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+}
+.film-wrapper {
+    position: relative;
+    width: 90%;
+  
+    margin: 0 auto
+}
+.icon-input-container {
+    position: relative;
+    width: 80%;
+}
+#search-glass {
+    position: absolute;
+    top: 16px;
+    left: 4px;
+
+    color: #A5A5A5;
+}
+#search-input {
+    height: 40px;
+    padding: 10px 10px 10px 34px;
+    border-radius: 2px;
+    border: none;
+    width: 100%;
+    background: #2E2E2F;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    color: #A5A5A5;
+
+}
+#search-btn {
+    width: 20%;
+    background: #4B4B4B;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    padding: 2px 8px;
+}
+.movie-container-no-search {
+    width: 100%;
+    height: 700px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-film {
+    color: #2E2E2F;
+}
+.movie-container {
+    padding-top: 50px;
+    width: 90%;
+}
+.hidden {
+    display: none;
+}
+.movie-info {
+    color: white;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.movie-name {
+    color: white;
+    margin: 0 5px 0 0;
+}
+.fa-star {
+    margin: 0 5px;
+}
+.rating {
+    margin: 0px 5px;
+}
+.movie-item-container {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #2E2E2F;
+  
+}
+.movie-img {
+    width: 30%;
+    margin: 0 auto;
+}
+.poster {
+    width: 100%;
+    object-fit: cover;
+    
+}
+.movie-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.movie-other-info {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.add-watchlist {
+
+    display: flex;
+    justify-content: space-between;
+}
+.fa-plus {
+    align-self: center;
+    margin: 0 10px;
+    padding: 10px 6px;
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+}
+@media screen and (min-width: 610px) {
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      
+    }
+    .movie-item-container   {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .movie-img {
+        
+        width: 30%;
+        
+       margin-right: 10px;
+    
+    }
+    .poster {
+        height: 250px;
+    }
+    .movie-info {
+        color: white;
+        width: 70%;
+    }
+    .movie-title {
+     justify-content: flex-start; 
+    }
+ 
+    
+}
