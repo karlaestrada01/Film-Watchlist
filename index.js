@@ -3,7 +3,16 @@ const movieContainer = document.querySelector(".movie-container")
 const searchForm = document.querySelector(".search-form")
 const searchInput = document.getElementById("search-input")
 
-let watchlist = []
+let watchlist = getWatchlist()
+
+function getWatchlist() {
+    let watchlistJSON = localStorage.getItem("watchlist")
+    if(watchlistJSON){
+        return JSON.parse(watchlistJSON)
+    }
+    
+    return []
+}
 
 searchForm.addEventListener('submit', (e) => {
 
@@ -105,6 +114,7 @@ function renderMoviesHtml(){
 movieContainer.addEventListener("click", (e) => {
 
     if(e.target.id){
+        
         watchlist.push(e.target.parentElement.parentElement.parentElement.parentElement.id)
         updateStorage()
     }
