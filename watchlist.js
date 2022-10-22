@@ -24,7 +24,7 @@ async function renderWatchListHtml(){
         if(watchlist){
             for(let listItem of watchlist){
                 
-                const response = await fetch(`http://www.omdbapi.com/?apikey=2e7dabe2&i=${listItem}`)
+                const response = await fetch(`https://www.omdbapi.com/?apikey=2e7dabe2&i=${listItem}`)
                 const data = await response.json()
         
                 const {Poster, Title, imdbRating, Genre, Plot, Runtime, imdbID} = data
