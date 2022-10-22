@@ -92,7 +92,7 @@ function renderMoviesHtml(){
                             <h4 class="genre">${Genre}</h4>
                             <div class="add-watchlist">
                                 
-                                <i class="fa-solid ${isInWatchlist(imdbID) ? "fa-circle-plus": "fa-circle-check"} fa-sm watchlist-icon" id="add-watchlist-${imdbID}"></i>
+                                <i class="fa-solid ${isInWatchlist(imdbID) ? "fa-circle-plus": "fa-circle-check"}  watchlist-icon" id="add-watchlist-${imdbID}"></i>
                                 <h4>Watchlist</h4>
                             </div>
                         </div>

@@ -4,6 +4,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Inter', sans-serif;
 }
 .website-header {
     width: 100%;
@@ -38,7 +39,7 @@ body {
     
 }
 #watchlist a:hover, #watchlist a:focus {
-    background: -webkit-linear-gradient(right, #eee, rgb(238, 20, 20));
+    background: -webkit-linear-gradient( left,rgb(238, 20, 20), white);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -82,11 +83,12 @@ body {
 .icon-input-container {
     position: relative;
     width: 80%;
+    
 }
 #search-glass {
     position: absolute;
-    top: 16px;
-    left: 4px;
+    top: 18px;
+    left: 6px;
 
     color: #A5A5A5;
 }
@@ -99,6 +101,8 @@ body {
     background: #2E2E2F;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
     color: #A5A5A5;
+    
+    
 
 }
 #search-btn {
@@ -109,6 +113,7 @@ body {
     color: white;
     padding: 2px 8px;
     cursor: pointer;
+ 
 }
 #search-btn:hover, #search-btn:focus {
     background: #393737;
@@ -125,7 +130,19 @@ body {
 .movie-container-no-search h2 {
     color: #2E2E2F;
 }
-
+.empty-container {
+    display: flex;
+    align-items: center;
+   
+}
+.empty-container i {
+    color: white;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.empty-container h2{
+    color: white;
+}
 .movie-cant-find {
     width: 100%;
     height: 700px;
@@ -144,7 +161,7 @@ body {
 }
 .movie-container {
     padding-top: 50px;
-    width: 90%;
+    width: 100%;
 }
 .hidden {
     display: none;

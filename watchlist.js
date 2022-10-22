@@ -47,7 +47,7 @@ async function renderWatchListHtml(){
                             <h4 class="genre">${Genre}</h4>
                             <div class="add-watchlist">
                                 
-                                <i class="fa-solid fa-circle-minus fa-sm" id="remove-watchlist"></i>
+                                <i class="fa-solid fa-circle-minus" id="remove-watchlist"></i>
                                 <h4>Watchlist</h4>
                             </div>
                         </div>
