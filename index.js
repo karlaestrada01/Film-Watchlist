@@ -3,13 +3,13 @@ const movieContainer = document.querySelector(".movie-container")
 const searchForm = document.querySelector(".search-form")
 const searchInput = document.getElementById("search-input")
 
-
+let watchlist = []
 
 searchForm.addEventListener('submit', (e) => {
 
     e.preventDefault()
 
-    displayMoviesHtml()
+    renderMoviesHtml()
    
    
 
@@ -23,19 +23,20 @@ async function getMovies() {
     return data
 }
 
-function displayMoviesHtml(){
+function renderMoviesHtml(){
     getMovies().then(async movie => {
         if(movie.Response === 'True'){
+            document.querySelector(".movie-container-no-search").classList.add("hidden")
             let str = ''
 
             for(let movieItem of movie.Search){
                 const response = await fetch(`http://www.omdbapi.com/?apikey=2e7dabe2&i=${movieItem.imdbID}`)
                 const data = await response.json()
                 console.log(data)
-                const {Poster, Title, imdbRating, Genre, Plot, Runtime} = data
+                const {Poster, Title, imdbRating, Genre, Plot, Runtime, imdbID} = data
                 str +=
                 `
-                <div class="movie-item-container">
+                <div class="movie-item-container" id="${imdbID}">
 
                     <div class="movie-img">
                         <img class="poster" src="${Poster}">
@@ -48,10 +49,11 @@ function displayMoviesHtml(){
         
                         </div>
                         <div class="movie-other-info">
-                            <h4 class="movie-duration">${Runtime} min</h4>
+                            <h4 class="movie-duration">${Runtime}</h4>
                             <h4 class="genre">${Genre}</h4>
                             <div class="add-watchlist">
-                                <i class="fa-solid fa-plus fa-xs"></i>
+                                
+                                <i class="fa-solid fa-circle-plus fa-sm" id="add-watchlist"></i>
                                 <h4>Watchlist</h4>
                             </div>
                         </div>
@@ -73,4 +75,16 @@ function displayMoviesHtml(){
             console.log("no find")
         }
     }) //getmove().then
+}
+
+movieContainer.addEventListener("click", (e) => {
+
+    if(e.target.id){
+        watchlist.push(e.target.parentElement.parentElement.parentElement.parentElement.id)
+        updateStorage()
+    }
+})
+
+function updateStorage() {
+    localStorage.setItem("watchlist", JSON.stringify(watchlist))
 }

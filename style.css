@@ -80,7 +80,7 @@ body {
 #search-input {
     height: 40px;
     padding: 10px 10px 10px 34px;
-    border-radius: 2px;
+    border-radius: 4px;
     border: none;
     width: 100%;
     background: #2E2E2F;
@@ -92,9 +92,13 @@ body {
     width: 20%;
     background: #4B4B4B;
     border: none;
-    border-radius: 2px;
+    border-radius: 4px;
     color: white;
     padding: 2px 8px;
+    cursor: pointer;
+}
+#search-btn:hover, #search-btn:focus {
+    background: #393737;
 }
 .movie-container-no-search {
     width: 100%;
@@ -104,6 +108,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.movie-container-no-search h2 {
+    color: #2E2E2F;
 }
 
 .fa-film {
@@ -125,22 +132,34 @@ body {
 .movie-name {
     color: white;
     margin: 0 5px 0 0;
+    font-size: 18px;
+    max-width: 70%;
 }
 .fa-star {
-    margin: 0 5px;
+    margin: 0 6px 0px 10px;
+    max-width: 15%;
+    align-self: center;
+    color: #FEC654;
 }
 .rating {
-    margin: 0px 5px;
+    max-width: 15%;
+    align-self: center;
+    margin: 4px 8px 0px 0;
+    font-size: 17px;
 }
 .movie-item-container {
     display: flex;
     flex-direction: column;
+    padding: 20px 0;
     border-bottom: 2px solid #2E2E2F;
   
 }
+.plot-description {
+    text-align: left;
+}
 .movie-img {
     width: 30%;
-    margin: 0 auto;
+    margin: 0 auto 5px auto;
 }
 .poster {
     width: 100%;
@@ -158,19 +177,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 14px;
 }
 .add-watchlist {
 
     display: flex;
     justify-content: space-between;
 }
-.fa-plus {
+.fa-circle-plus {
     align-self: center;
     margin: 0 10px;
-    padding: 10px 6px;
-    background-color: white;
-    color: black;
-    border-radius: 50%;
+    
+    
+    color: white;
+    
+    cursor: pointer;
+}
+.fa-circle-minus {
+    align-self: center;
+    margin: 0 10px;
+    
+    
+    color: white;
+    
+    cursor: pointer;
 }
 @media screen and (min-width: 610px) {
 
@@ -191,7 +221,8 @@ body {
         
         width: 30%;
         
-       margin-right: 10px;
+        margin-bottom: 0;
+       margin-right: 15px;
     
     }
     .poster {
@@ -203,6 +234,15 @@ body {
     }
     .movie-title {
      justify-content: flex-start; 
+    }
+
+    .movie-other-info {
+        font-size: 18px;
+
+    }
+    .fa-star {
+        align-self: center;
+    
     }
  
     
