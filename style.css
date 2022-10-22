@@ -113,6 +113,19 @@ body {
     color: #2E2E2F;
 }
 
+.movie-cant-find {
+    width: 100%;
+    height: 700px;
+
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+.movie-cant-find h2 {
+    color: #2E2E2F;
+}
+
 .fa-film {
     color: #2E2E2F;
 }

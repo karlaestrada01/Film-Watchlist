@@ -11,22 +11,43 @@ searchForm.addEventListener('submit', (e) => {
 
     renderMoviesHtml()
    
+    searchForm.reset()
    
 
 
 })
 
 async function getMovies() {
+    let data
+    try{
     const response = await fetch(`http://www.omdbapi.com/?apikey=2e7dabe2&s=${searchInput.value}`)
-    const data = await response.json()
-    console.log(data)
-    return data
+     data = await response.json()
+    
+    
+    } 
+    catch(e) {
+       console.log(e)
+        console.log("in erh")
+
+    }
+    if(data){
+        return data
+    }
+    else {
+        console.log("idk")
+    }
+    
+   
 }
 
 function renderMoviesHtml(){
+    
+
     getMovies().then(async movie => {
         if(movie.Response === 'True'){
             document.querySelector(".movie-container-no-search").classList.add("hidden")
+            document.querySelector(".movie-cant-find").classList.add("hidden")
+            movieContainer.classList.remove("hidden")
             let str = ''
 
             for(let movieItem of movie.Search){
@@ -72,7 +93,11 @@ function renderMoviesHtml(){
             movieContainer.innerHTML = str
         }//if true 
         else {
-            console.log("no find")
+            document.querySelector(".movie-container-no-search").classList.add("hidden")
+            document.querySelector(".movie-cant-find").classList.remove("hidden")
+            movieContainer.classList.add("hidden")
+            console.log("in here bro")
+
         }
     }) //getmove().then
 }
