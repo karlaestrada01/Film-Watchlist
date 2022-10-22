@@ -14,6 +14,15 @@ function getWatchlist() {
     return []
 }
 
+function isInWatchlist(imdb) {
+    if(watchlist.indexOf(imdb)===-1){
+        return true
+    }
+    else {
+        return false
+    }
+    
+}
 searchForm.addEventListener('submit', (e) => {
 
     e.preventDefault()
@@ -83,7 +92,7 @@ function renderMoviesHtml(){
                             <h4 class="genre">${Genre}</h4>
                             <div class="add-watchlist">
                                 
-                                <i class="fa-solid fa-circle-plus fa-sm" id="add-watchlist"></i>
+                                <i class="fa-solid ${isInWatchlist(imdbID) ? "fa-circle-plus": "fa-circle-check"} fa-sm watchlist-icon" id="add-watchlist-${imdbID}"></i>
                                 <h4>Watchlist</h4>
                             </div>
                         </div>
@@ -113,10 +122,20 @@ function renderMoviesHtml(){
 
 movieContainer.addEventListener("click", (e) => {
 
-    if(e.target.id){
+
+    let targetId = e.target.id
+    if(targetId){
         
-        watchlist.push(e.target.parentElement.parentElement.parentElement.parentElement.id)
-        updateStorage()
+        let value = e.target.parentElement.parentElement.parentElement.parentElement.id
+
+        document.getElementById(targetId).classList.remove("fa-circle-plus")
+        document.getElementById(targetId).classList.add("fa-circle-check")
+        //if movie already in watchlist it cannot be added
+        if(watchlist.indexOf(value) === -1){
+            watchlist.push(e.target.parentElement.parentElement.parentElement.parentElement.id)
+            updateStorage()
+        }
+        
     }
 })
 
