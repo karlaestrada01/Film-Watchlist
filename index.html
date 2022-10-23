@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewmport" content="width=device-width, initial-scale=1.0 ">
         <!-- Font awesome CDN -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,28 +25,24 @@
         <main>
             <div class="content-main">
                 <div class="film-wrapper content-wrap">
-                   <form class="search-form"  id="form"> 
-                    <div class="search-container">
-                        <div class="icon-input-container">
-                            <i class="fa-solid fa-magnifying-glass fa-lg" id="search-glass"></i>
-                            <input type="text" name="search-input" id="search-input">
+                   <form class="search-form" id="form"> 
+                        <div class="search-container">
+                            <div class="icon-input-container">
+                                <i class="fa-solid fa-magnifying-glass fa-lg" id="search-glass"></i>
+                                <input type="text" name="search-input" id="search-input">
+                            </div>
+                            
+                            <button type="submit" id="search-btn">Search</button>
                         </div>
-                        
-                        <button type="submit" id="search-btn">Search</button>
-                    </div>
                     </form>
-
                     <div class="movie-container-no-search">
                         <i class="fa-solid fa-film fa-8x"></i>
                         <h2>Start exploring</h2>
                     </div>
-                    <div class="movie-cant-find hidden">
-                        
-                        <h2>Unable to find what you're looking for. Please try another search</h2>
+                    <div class="movie-cant-find hidden">   
+                        <h2>Unable to find what you're looking for. Please try another search.</h2>
                     </div>
-                    <div class="movie-container">
-                       
-                    </div>
+                    <div class="movie-container"></div>
                 </div>
 
             </div>

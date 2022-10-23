@@ -1,10 +1,20 @@
-
+/**
+ * Movie watchlist search page
+ *      Users can search for the movie they want and add to their
+ *      watchlist
+ */
 const movieContainer = document.querySelector(".movie-container")
 const searchForm = document.querySelector(".search-form")
 const searchInput = document.getElementById("search-input")
 
 let watchlist = getWatchlist()
 
+/**
+ * Retrieves the watchlist from local storage
+ * @returns
+ *      the user's watchlist if it exists if not
+ *      an empty array is returned
+ */
 function getWatchlist() {
     let watchlistJSON = localStorage.getItem("watchlist")
     if(watchlistJSON){
@@ -14,8 +24,16 @@ function getWatchlist() {
     return []
 }
 
+/**
+ * Checks if a certain movie is in the watchlist
+ * @param {*} imdb 
+ *      The imdb of a specific movie
+ * @returns 
+ *      true , if the watchlist contains the movie
+ *      false, otherwise
+ */
 function isInWatchlist(imdb) {
-    if(watchlist.indexOf(imdb)===-1){
+    if(watchlist.indexOf(imdb) === -1){
         return true
     }
     else {
@@ -23,45 +41,43 @@ function isInWatchlist(imdb) {
     }
     
 }
+/**
+ * Event listener for when a user searches for a movie
+ */
 searchForm.addEventListener('submit', (e) => {
-
     e.preventDefault()
-
     renderMoviesHtml()
-   
     searchForm.reset()
-   
-
-
 })
 
+/**
+ * Retrieves the movies from the api
+ * @returns 
+ *      movie object if valid user input
+ */
 async function getMovies() {
     let data
     try{
-    const response = await fetch(`https://www.omdbapi.com/?apikey=2e7dabe2&s=${searchInput.value}`)
-     data = await response.json()
-    
+        const response = await fetch(`https://www.omdbapi.com/?apikey=2e7dabe2&s=${searchInput.value}`)
+        data = await response.json()
+        console.log(data)
     
     } 
     catch(e) {
-       console.log(e)
-        console.log("in erh")
-
+        console.log(e)
     }
     if(data){
         return data
     }
-    else {
-        console.log("idk")
-    }
     
-   
 }
 
+/**
+ * Renders movie watchlist onto the screen
+ */
 function renderMoviesHtml(){
-    
-
     getMovies().then(async movie => {
+        console.log(movie)
         if(movie.Response === 'True'){
             document.querySelector(".movie-container-no-search").classList.add("hidden")
             document.querySelector(".movie-cant-find").classList.add("hidden")
@@ -71,7 +87,6 @@ function renderMoviesHtml(){
             for(let movieItem of movie.Search){
                 const response = await fetch(`https://www.omdbapi.com/?apikey=2e7dabe2&i=${movieItem.imdbID}`)
                 const data = await response.json()
-                console.log(data)
                 const {Poster, Title, imdbRating, Genre, Plot, Runtime, imdbID} = data
                 str +=
                 `
@@ -106,10 +121,10 @@ function renderMoviesHtml(){
                 </div>
                     
                     
-                    `
+                `
             }
             movieContainer.innerHTML = str
-        }//if true 
+        }
         else {
             document.querySelector(".movie-container-no-search").classList.add("hidden")
             document.querySelector(".movie-cant-find").classList.remove("hidden")
@@ -117,21 +132,21 @@ function renderMoviesHtml(){
             console.log("in here bro")
 
         }
-    }) //getmove().then
+    }) 
 }
 
+/**
+ * Event listener if a user clicks on the plus icon of one the movies
+ * on the watchlist
+ */
 movieContainer.addEventListener("click", (e) => {
-
-
     let targetId = e.target.id
     if(targetId){
-        
         let value = e.target.parentElement.parentElement.parentElement.parentElement.id
-
         document.getElementById(targetId).classList.remove("fa-circle-plus")
         document.getElementById(targetId).classList.add("fa-circle-check")
         //if movie already in watchlist it cannot be added
-        if(watchlist.indexOf(value) === -1){
+        if(isInWatchlist(value)){
             watchlist.push(e.target.parentElement.parentElement.parentElement.parentElement.id)
             updateStorage()
         }
@@ -139,6 +154,9 @@ movieContainer.addEventListener("click", (e) => {
     }
 })
 
+/**
+ * Updates local storage and its watchlist
+ */
 function updateStorage() {
     localStorage.setItem("watchlist", JSON.stringify(watchlist))
 }
