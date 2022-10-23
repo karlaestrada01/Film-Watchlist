@@ -12,7 +12,7 @@ const movieContainer = document.querySelector(".movie-container")
  * Retrieves the local storage watchlist
  * @returns 
  *      if watchlist present in storage that is returned
- *      else an empty string is returned
+ *      else an empty array is returned
  */
 function getWatchlist() {
     let watchlistJSON = localStorage.getItem("watchlist")
@@ -20,7 +20,7 @@ function getWatchlist() {
         return JSON.parse(watchlistJSON)
     }
     
-    return ""
+    return []
 }
 
 /**
@@ -31,7 +31,7 @@ async function renderWatchListHtml(){
     let str = ""
 
     //if the watchlist is empty or doesnt exist
-    if(!watchlist || watchlist.length === 0){
+    if(watchlist.length === 0){
         document.querySelector(".movie-container-no-search").classList.remove("hidden")
         movieContainer.innerHTML = str
     }

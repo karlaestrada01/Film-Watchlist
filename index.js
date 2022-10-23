@@ -77,7 +77,6 @@ async function getMovies() {
  */
 function renderMoviesHtml(){
     getMovies().then(async movie => {
-        console.log(movie)
         if(movie.Response === 'True'){
             document.querySelector(".movie-container-no-search").classList.add("hidden")
             document.querySelector(".movie-cant-find").classList.add("hidden")
@@ -129,8 +128,6 @@ function renderMoviesHtml(){
             document.querySelector(".movie-container-no-search").classList.add("hidden")
             document.querySelector(".movie-cant-find").classList.remove("hidden")
             movieContainer.classList.add("hidden")
-            console.log("in here bro")
-
         }
     }) 
 }
