@@ -60,8 +60,6 @@ async function getMovies() {
     try{
         const response = await fetch(`https://www.omdbapi.com/?apikey=2e7dabe2&s=${searchInput.value}`)
         data = await response.json()
-        console.log(data)
-    
     } 
     catch(e) {
         console.log(e)
